@@ -42,6 +42,7 @@ function verifyToken(req, res, next) {
     }
 }
 
+
 // Exemple route protégée
 app.get("/api/admin/dashboard", verifyToken, (req, res) => {
     res.json({ message: `Bienvenue ${req.user.email} sur le dashboard` });
