@@ -1,10 +1,22 @@
 const express = require("express");
 const cors = require("cors");
 const adminRoutes = require("./routes/adminRoutes");
-const projetRoutes=require("./routes/projetRoute")
+const projetRoutes = require("./routes/projetRoute")
 
 const app = express();
-app.use(cors());
+// Autoriser uniquement ton front dev et prod
+const allowedOrigins = [
+  "http://localhost:5173", // React dev
+  "https://portfolio-rivo-andriharisoa.vercel.app" // frontend prod
+];
+
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // OPTIONS pour préflight
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
