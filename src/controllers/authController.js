@@ -7,7 +7,7 @@ const adminUser = {
     password: bcrypt.hashSync("03750119", 8)
 };
 
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
     const { email, password } = req.body;
     if (email !== adminUser.email) return res.status(401).json({ message: "Email incorrect" });
 

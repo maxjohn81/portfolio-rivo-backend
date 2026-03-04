@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model administrateurs {
+  id            Int      @id @default(autoincrement())
+  nom           String
+  email         String   @unique
+  mot_de_passe  String
+  date_creation DateTime @default(now())
+}
+model projets {
+  id                 Int      @id @default(autoincrement())
+  titre              String
+  description        String
+  image              String?
+  lien_github        String?
+  lien_demo          String?
+  mis_en_avant       Boolean  @default(false)
+  statut             String   @default("brouillon")
+  ordre_affichage    Int?
+  date_creation      DateTime @default(now())
+  date_modification  DateTime @updatedAt
+
+  technologies       String[] // tableau de technologies
+}
+// Table technologies pour stocker les technologies utilisées dans les projets
+
+
+model competences {
+  id              Int     @id @default(autoincrement())
+  nom             String
+  icone           String?
+  categorie       String
+  ordre_affichage Int?
+}
+
+model experiences {
+  id              Int       @id @default(autoincrement())
+  entreprise      String
+  poste           String
+  description     String
+  date_debut      DateTime
+  date_fin        DateTime?
+  en_cours        Boolean   @default(false)
+  ordre_affichage Int?
+}
+
+model educations {
+  id              Int     @id @default(autoincrement())
+  etablissement   String
+  diplome         String
+  domaine         String
+  annee_debut     Int
+  annee_fin       Int?
+  description     String?
+  ordre_affichage Int?
+}
+
+model images {
+  id          Int      @id @default(autoincrement())
+  nom_fichier String
+  chemin      String
+  date_upload DateTime @default(now())
+}

@@ -6,16 +6,27 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "npx nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prisma:generate": "npx prisma generate",
+    "prisma:push": "npx prisma db push",
+    "prisma:studio": "npx prisma studio",
+    "prisma:migrate": "npx prisma migrate dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
     "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3"
+    "jsonwebtoken": "^9.0.3",
+    "postgres": "^3.4.8",
+    "prisma": "^5.22.0"
+  },
+  "devDependencies": {
+    "prism": "^4.1.2"
   }
 }
