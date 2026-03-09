@@ -17,11 +17,11 @@ const getProjetById = async (id) => {
   const projet = await prisma.projets.findUnique({
     where: { id: parseInt(id) }
   });
-  
+
   if (!projet) {
     throw new Error("Projet non trouvé");
   }
-  
+
   return projet;
 };
 

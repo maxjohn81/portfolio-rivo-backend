@@ -17,14 +17,12 @@ exports.getAllProjets = asyncHandler(async (req, res) => {
 // Create new projet
 exports.creatProjets = asyncHandler(async (req, res) => {
   const newProjets = await createProjet(req.body);
-  
+
   // c'est pour renvoyer les données avec celui qui vient d'être créé
   res.status(201).json({
     message: "Projet créé avec succès",
     data: newProjets
   });
-  
-  console.log("créé avec succès !");
 });
 
 // Get projet by ID
