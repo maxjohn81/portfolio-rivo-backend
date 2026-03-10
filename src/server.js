@@ -5,6 +5,7 @@ const projetRoutes = require("./routes/projetRoute")
 const imagesRoutes = require("./routes/imagesRoute")
 const errorHandler = require("./middlewares/errorHandler")
 const competenceRoutes = require("./routes/competenceRoute")
+const experienceRoutes = require("./routes/experienceRoute")
 
 const app = express();
 // Autoriser uniquement ton front dev et prod
@@ -24,6 +25,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/projets", projetRoutes)
 app.use("/api/images", imagesRoutes)
 app.use("/api/skills", competenceRoutes)
+app.use("/api/experiences", experienceRoutes)
 app.use(errorHandler)
 
 const PORT = 5000;
