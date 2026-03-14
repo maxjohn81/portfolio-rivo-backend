@@ -11,9 +11,11 @@ const login = async (data) => {
     where: { email }
   });
 
-  if (!admin) {
-    throw new Error("Email incorrect");
-  }
+  if (admin == null) throw new Error("Admin introuvable !")
+
+    if (!admin) {
+      throw new Error("Email incorrect");
+    }
 
   const passwordIsValid = bcrypt.compareSync(password, admin.mot_de_passe);
   if (!passwordIsValid) {

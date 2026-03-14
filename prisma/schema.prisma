@@ -14,23 +14,22 @@ model administrateurs {
   mot_de_passe  String
   date_creation DateTime @default(now())
 }
+
 model projets {
-  id                 Int      @id @default(autoincrement())
-  titre              String
-  description        String
-  image              String?
-  lien_github        String?
-  lien_demo          String?
-  mis_en_avant       Boolean  @default(false)
-  statut             String   @default("brouillon")
-  ordre_affichage    Int?
-  date_creation      DateTime @default(now())
-  date_modification  DateTime @updatedAt
+  id                Int      @id @default(autoincrement())
+  titre             String
+  description       String
+  image             String?
+  lien_github       String?
+  lien_demo         String?
+  mis_en_avant      Boolean  @default(false)
+  statut            String   @default("brouillon")
+  ordre_affichage   Int?
+  date_creation     DateTime @default(now())
+  date_modification DateTime @updatedAt
 
-  technologies       String[] // tableau de technologies
+  technologies String[] // tableau de technologies
 }
-// Table technologies pour stocker les technologies utilisées dans les projets
-
 
 model competences {
   id              Int     @id @default(autoincrement())
@@ -52,13 +51,14 @@ model experiences {
 }
 
 model educations {
-  id              Int     @id @default(autoincrement())
+  id              Int       @id @default(autoincrement())
   etablissement   String
   diplome         String
   domaine         String
-  annee_debut     Int
-  annee_fin       Int?
+  date_debut      DateTime
+  date_fin        DateTime?
   description     String?
+  en_cours        Boolean   @default(false)
   ordre_affichage Int?
 }
 
